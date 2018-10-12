@@ -1,6 +1,6 @@
 {
-  "name": "webpack-bundle-tracker",
-  "version": "0.4.0-beta",
+  "name": "webpack-bundle-debian-tracker",
+  "version": "0.1.0",
   "description": "Spits out some stats about webpack compilation process to a file",
   "license": "MIT",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/owais/webpack-bundle-tracker.git"
+    "url": "https://github.com/laboratory50/webpack-bundle-tracker.git"
   },
   "keywords": [
     "webpack",
@@ -17,15 +17,15 @@
     "stats",
     "files"
   ],
-  "author": "Owais Lone",
+  "author": "Owais Lone, Vasiliy Shlykov",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
+      "url": "https://raw.githubusercontent.com/laboratory50/webpack-bundle-tracker/master/LICENSE"
     }
   ],
   "bugs": {
-    "url": "https://github.com/owais/webpack-bundle-tracker/issues"
+    "url": "https://github.com/laboratory50/webpack-bundle-tracker/issues"
   },
   "dependencies": {
     "deep-extend": "^0.4.1",

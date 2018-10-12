@@ -1,4 +1,4 @@
-# webpack-bundle-tracker
+# webpack-bundle-debian-tracker
 
 [![Join the chat at https://gitter.im/owais/webpack-bundle-tracker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/owais/webpack-bundle-tracker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -10,14 +10,14 @@ Spits out some stats about webpack compilation process to a file.
 #### Install
 
 ```bash
-npm install --save-dev webpack-bundle-tracker
+npm install --save-dev webpack-bundle-debian-tracker
 ```
 
 <br>
 
 #### Usage
 ```javascript
-var BundleTracker  = require('webpack-bundle-tracker');
+var BundleDebianTracker  = require('webpack-bundle-tracker');
 module.exports = {
     context: __dirname,
     entry: {
@@ -31,12 +31,15 @@ module.exports = {
     },
 
     plugins: [
-      new BundleTracker({path: __dirname, filename: './assets/webpack-stats.json'})
+        new BundleTracker({
+            path: __dirname,
+            target: '/usr/share/mypackage'
+        })
     ]
 }
 ```
 
-`./assets/webpack-stats.json` will look like,
+`webpack-stats.json` will look like,
 
 ```json
 {
@@ -45,7 +48,7 @@ module.exports = {
    "app":[{
       "name":"app-0828904584990b611fb8.js",
       "publicPath":"http://localhost:3000/assets/bundles/app-0828904584990b611fb8.js",
-      "path":"/home/user/project-root/assets/bundles/app-0828904584990b611fb8.js"
+      "path":"/usr/share/mypackage/assets/bundles/app-0828904584990b611fb8.js"
     }]
   }
 }
@@ -84,7 +87,7 @@ And in case `logTime` option is set to `true`, the output will look like,
    "app":[{
       "name":"app-0828904584990b611fb8.js",
       "publicPath":"http://localhost:3000/assets/bundles/app-0828904584990b611fb8.js",
-      "path":"/home/user/project-root/assets/bundles/app-0828904584990b611fb8.js"
+      "path":"/usr/share/mypackage/project-root/assets/bundles/app-0828904584990b611fb8.js"
     }]
   },
   "startTime":1440535322138,
@@ -106,4 +109,5 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 * `filename` - Name of the bundle tracker JSON file.
 * `logTime` - Optional boolean property to output `startTime` and `endTime` in bundle tracker file.
 * `path` - Optional bundle tracker output path.
+* `target` - Target path installed by debian package.
 * `publicPath` - Optional property to override `output.publicPath`.

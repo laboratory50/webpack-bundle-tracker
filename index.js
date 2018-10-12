@@ -39,7 +39,7 @@ Plugin.prototype.apply = function(compiler) {
       };
 
       if (compilation.hooks){
-        const plugin = {name: 'BundleTrackerPlugin'};
+        const plugin = {name: 'BundleDebianTrackerPlugin'};
         compilation.hooks.failedModule.tap(plugin, failedModule);
       } else {
         compilation.plugin('failed-module', failedModule);
@@ -69,9 +69,7 @@ Plugin.prototype.apply = function(compiler) {
           if (publicPath) {
             F.publicPath = publicPath + file;
           }
-          if (compiler.options.output.path) {
-            F.path = path.join(compiler.options.output.path, file);
-          }
+          F.path = path.join(self.options.target, file);
           return F;
         });
         chunks[chunk.name] = files;
@@ -90,7 +88,7 @@ Plugin.prototype.apply = function(compiler) {
     };
 
     if (compiler.hooks) {
-      const plugin = {name: 'BundleTrackerPlugin'};
+      const plugin = {name: 'BundleDebianTrackerPlugin'};
       compiler.hooks.compilation.tap(plugin, _compilation);
       compiler.hooks.compile.tap(plugin, compile);
       compiler.hooks.done.tap(plugin, done);
